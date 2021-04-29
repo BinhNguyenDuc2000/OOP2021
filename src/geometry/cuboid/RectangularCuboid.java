@@ -99,7 +99,7 @@ public class RectangularCuboid {
 	}
 	
 	//With line
-	public boolean hasLine(Line newLine) {
+	public boolean hasIntersection(Line newLine) {
 		//Kiem tra mot duong thang co di qua hop
 		//To do
 		return true;

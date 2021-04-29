@@ -5,28 +5,33 @@ import geometry.point.Point;
 import geometry.vector.Vector;
 
 //Mot mat phang duoc tao ra tu mot diem va mot vector phap tuyen
-public class Plane extends Vector{
-	private Point a;
+public class Plane {
+	private Point point;
+	private Vector vector;
 	
 	//Constructors
 	public Plane() {
-		super();
 	}
-	public Plane(double x,double y,double z,Point a) {
-		super(x,y,z);
-		this.a = a;
+	public Plane(double x,double y,double z,Point point) {
+		this.point = point;
+		this.vector = new Vector(x,y,z);
 	}
 	public Plane(Point a,Point b,Point c) {
 		//To do
 	}
 	//Getters and Setters
-	public Point getA() {
-		return a;
+	public Point getPoint() {
+		return point;
 	}
-	public void setA(Point a) {
-		this.a = a;
+	public void setPoint(Point point) {
+		this.point = point;
 	}
-	
+	public Vector getVector() {
+		return vector;
+	}
+	public void setVector(Vector vector) {
+		this.vector = vector;
+	}
 	//Functions with a plane
 	
 	//With point
@@ -41,17 +46,15 @@ public class Plane extends Vector{
 	}
 	
 	//With vector
-	@Override
 	public double getAngle(Vector newVector) {
 		//Lay goc giua mat phang va mot vector
-		return 90-super.getAngle(newVector);
+		return 90-vector.getAngleS(newVector);
 	}
 	
 	//With line 
 	public double getAngle(Line newLine) {
-		//Lay goc giua mat phang va mot duong thang
-		//To do
-		return 90-newLine.getAngle(this);
+		//Lay goc giua mat phang va mot duong thang		
+		return 90-vector.getAngleS(newLine.getVector());
 	}
 	public Point getIntersection(Line newLine) {
 		//Lay giao diem giua mat phang va mot duong thang, tra ve null neu khong co
