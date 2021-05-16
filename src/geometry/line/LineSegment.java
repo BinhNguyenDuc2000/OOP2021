@@ -2,7 +2,7 @@ package geometry.line;
 
 import geometry.point.Point;
 //Doan thang duoc tao boi mot duong thang va hai diem
-public class LineSegment extends Line{
+public class LineSegment {
 	private Point point1;
 	private Point point2;
 	private Line line;
@@ -47,6 +47,18 @@ public class LineSegment extends Line{
 	public boolean hasPoint(Point newPoint) {
 		//Kiem tra mot diem co nam tren mot doan thang
 		//To do
-		return true;
+		if (!this.getLine().hasPoint(newPoint))
+			return false;
+		//Kiem tra diem do nam giua 2 diem point 1 va 2
+		//B nam giua A va C neu AB+BC=CA
+		double ab = this.getPoint1().getDistance(newPoint);
+		double bc = this.getPoint2().getDistance(newPoint);
+		double ac = this.getPoint1().getDistance(this.getPoint2());
+		if (ab+bc==ac)
+			return true;
+		return false;
 	}
 }
+
+
+                     

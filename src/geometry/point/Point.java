@@ -44,7 +44,10 @@ public class Point {
 	//Functions with a point
 	public double getDistance(Point newPoint) {
 		// To do
-		return 0;
+		double newX = Math.pow(this.getX()-newPoint.getX(),2);
+		double newY = Math.pow(this.getY()-newPoint.getY(),2);
+		double newZ = Math.pow(this.getZ()-newPoint.getZ(),2);
+		return Math.sqrt(newX+newY+newZ);
 	}
 	
 }

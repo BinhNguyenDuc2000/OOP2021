@@ -9,17 +9,17 @@ public class Vector {
 	
 	//Constructors
 	public Vector() {
-		super();
 	}
 	public Vector(double x, double y, double z) {
-		super();
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 	public Vector(Point a,Point b) {
-		super();
 		//To do
+		this.x = a.getX()-b.getX();
+		this.y = a.getY()-b.getY();
+		this.z = a.getZ()-b.getZ();
 	}
 	
 	
@@ -41,6 +41,10 @@ public class Vector {
 	}
 	public void setZ(double z) {
 		this.z = z;
+	}
+	
+	public double getLength() {
+		return Math.sqrt(x*x+y*y+z*z);
 	}
 	
 	//Functions with a vector
