@@ -19,6 +19,7 @@ public class Line {
 	
 	public Line(Point a,Point b) {
 		//To do
+		
 	}
 
 	//Getters and Setters
@@ -46,7 +47,15 @@ public class Line {
 	public double getDistance(Point newPoint) {
 		//Lay khoang cach giua duong thang va mot diem
 		//To do
-		return 0;
+		double distanceP;
+		double x1;
+		double x2;
+		
+		x1 = Math.sqrt(Math.pow(LineSegment.x, 2) + Math.pow(LineSegment.y, 2));
+		x2 = Math.abs(LineSegment.a * newPoint.getX() + LineSegment.b * newPoint.getY() + LineSegment.c);
+		distanceP = x2/x1;
+		
+		return distanceP;
 	}
 	
 	//With vector
@@ -63,13 +72,15 @@ public class Line {
 	public double getDistance(Line newlLine) {
 		//Lay khoang cach giua 2 duong thang
 		//To do
-		return 0;
+		double distanceL = 0;
+		
+		return distanceL;
 	}
 	public Point getIntersection(Line newLine) {
 		//Lay giao diem giua duong thang va mot duong thang, tra ve null neu khong co
 		//To do
-		return null;
 		
+		return null;
 	}
 	
 }
