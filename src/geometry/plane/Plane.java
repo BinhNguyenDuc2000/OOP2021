@@ -8,9 +8,18 @@ import geometry.vector.Vector;
 public class Plane {
 	private Point point1;
 	private Vector vector;
+	public static final String invalidPlane="Invalid plane";
+	public static final String invalidLine="Invalid line";
+	public static final String belongToPlane="Line belong to the plane";
+	public static final String parallelToPlane="Line is parallel to the plane";
+	public static final String hasIntersection="The line has a intersection with the plane";
 	
 	//Constructors
 	public Plane() {
+	}
+	public Plane(Point point1,Vector vector) {
+		this.point1 = point1;
+		this.vector = vector;
 	}
 	public Plane(double x,double y,double z,Point point1) {
 		this.point1 = point1;
@@ -33,10 +42,10 @@ public class Plane {
 		this.vector = vector;
 	}
 	public double getD() {
-		double ax0=vector.getX()*point1.getX();
-		double by0=vector.getY()*point1.getY();
-		double cz0=vector.getZ()*point1.getZ();
-		return -ax0-by0-cz0;
+		double Ax0=vector.getX()*point1.getX();
+		double By0=vector.getY()*point1.getY();
+		double Cz0=vector.getZ()*point1.getZ();
+		return -Ax0-By0-Cz0;
 	}
 	//Functions with a plane
 	
@@ -58,18 +67,52 @@ public class Plane {
 	}
 	
 	//With line 
-	public Point getIntersection(Line newLine) {
-		//Lay giao diem giua mat phang va mot duong thang, tra ve null neu khong co
-		//To double
+	public String getPosition(Line newLine) {
 		if(vector.getLength()==0)
-			return null;
+			return invalidPlane;
 		if(newLine.getVector().getLength()==0)
-			return null;
+			return invalidLine;
 		double Aa=vector.getX()*newLine.getVector().getX();
 		double Bb=vector.getY()*newLine.getVector().getY();
 		double Cc=vector.getZ()*newLine.getVector().getZ();
-		if (Aa+Bb+Cc==0)
+		double Dd=Aa+Bb+Cc;
+		if (Dd==0) {
+			if (newLine.getPoint1()==null) {
+				return invalidLine;
+			}
+			double Ax0 = vector.getX()*newLine.getPoint1().getX();
+			double By0 = vector.getY()*newLine.getPoint1().getY();
+			double Cz0 = vector.getZ()*newLine.getPoint1().getZ();
+			if (Ax0+By0+Cz0+getD()==0) {
+				return belongToPlane;
+			}
+			else {
+				return parallelToPlane;
+			}
+		}
+		else {
+			return hasIntersection;
+		}
+		
+	}
+	
+	public Point getIntersection(Line newLine) {
+		//Lay giao diem giua mat phang va mot duong thang, tra ve null neu khong co
+		//Cong thuc xem tai https://hayhochoi.vn/cac-dang-toan-ve-phuong-trinh-duong-thang-trong-khong-gian-oxyz-va-bai-tap-toan-lop-12.html
+		if(getPosition(newLine)!=hasIntersection)
 			return null;
-		return null;
+		else {
+			double Aat= vector.getX()*newLine.getVector().getX();
+			double Bbt= vector.getY()*newLine.getVector().getY();
+			double Cct= vector.getZ()*newLine.getVector().getZ();
+			double Ax0= vector.getX()*newLine.getPoint1().getX();
+			double Bx0= vector.getY()*newLine.getPoint1().getY();
+			double Cx0= vector.getZ()*newLine.getPoint1().getZ();
+			double t=(-Ax0-Bx0-Cx0-getD())/(Aat+Bbt+Cct);
+			double x=t*newLine.getVector().getX()+newLine.getPoint1().getX();
+			double y=t*newLine.getVector().getY()+newLine.getPoint1().getY();
+			double z=t*newLine.getVector().getZ()+newLine.getPoint1().getZ();
+			return new Point(x,y,z);
+		}
 	}
 }

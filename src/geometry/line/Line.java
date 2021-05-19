@@ -12,6 +12,11 @@ public class Line {
 	public Line() {
 	}
 	
+	public Line(Point point1,Vector vector) {
+		this.point1 = point1;
+		this.vector = vector;
+	}
+	
 	public Line(double x, double y, double z,Point point1) {
 		this.point1 = point1;
 		this.vector = new Vector(x,y,z);
