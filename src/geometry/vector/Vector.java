@@ -3,9 +3,9 @@ package geometry.vector;
 import geometry.point.Point;
 
 public class Vector {
-	private double x;
-	private double y;
-	private double z;
+	private double x=0;
+	private double y=0;
+	private double z=0;
 	
 	//Constructors
 	public Vector() {
@@ -52,6 +52,11 @@ public class Vector {
 		if (x==0 && y==0 && z==0) {
 			return true;
 		}
+		return false;
+	}
+	public boolean isParallel(Vector newVector) {
+		if (this.getX()==newVector.getY()&&this.getY()==newVector.getY()&&this.getZ()==newVector.getZ())
+			return true;
 		return false;
 	}
 	public double getAngle(Vector newVector) {

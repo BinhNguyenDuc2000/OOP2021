@@ -6,31 +6,37 @@ import geometry.vector.Vector;
 
 //Mot mat phang duoc tao ra tu mot diem va mot vector phap tuyen
 public class Plane {
-	private Point point;
+	private Point point1;
 	private Vector vector;
 	
 	//Constructors
 	public Plane() {
 	}
-	public Plane(double x,double y,double z,Point point) {
-		this.point = point;
+	public Plane(double x,double y,double z,Point point1) {
+		this.point1 = point1;
 		this.vector = new Vector(x,y,z);
 	}
 	public Plane(Point a,Point b,Point c) {
 		//To do
 	}
 	//Getters and Setters
-	public Point getPoint() {
-		return point;
+	public Point getPoint1() {
+		return point1;
 	}
-	public void setPoint(Point point) {
-		this.point = point;
+	public void setPoint(Point point1) {
+		this.point1 = point1;
 	}
 	public Vector getVector() {
 		return vector;
 	}
 	public void setVector(Vector vector) {
 		this.vector = vector;
+	}
+	public double getD() {
+		double ax0=vector.getX()*point1.getX();
+		double by0=vector.getY()*point1.getY();
+		double cz0=vector.getZ()*point1.getZ();
+		return -ax0-by0-cz0;
 	}
 	//Functions with a plane
 	
@@ -41,24 +47,29 @@ public class Plane {
 	}
 	public double getDistance(Point newPoint) {
 		//Lay khoang cach giua mat phang va mot diem
-		//To do
-		return 0;
-	}
-	
-	//With vector
-	public double getAngle(Vector newVector) {
-		//Lay goc giua mat phang va mot vector
-		return 90-vector.getAngleS(newVector);
+		//Tra ve -1 neu co loi
+		if (vector.getLength()==0) {
+			return -1;
+		}
+		double ax=vector.getX()*newPoint.getX();
+		double by=vector.getY()*newPoint.getY();
+		double cz=vector.getZ()*newPoint.getZ();
+		return Math.abs(ax+by+cz+getD())/vector.getLength();
 	}
 	
 	//With line 
-	public double getAngle(Line newLine) {
-		//Lay goc giua mat phang va mot duong thang		
-		return 90-vector.getAngleS(newLine.getVector());
-	}
 	public Point getIntersection(Line newLine) {
 		//Lay giao diem giua mat phang va mot duong thang, tra ve null neu khong co
-		//To do
+		//To double
+		if(vector.getLength()==0)
+			return null;
+		if(newLine.getVector().getLength()==0)
+			return null;
+		double Aa=vector.getX()*newLine.getVector().getX();
+		double Bb=vector.getY()*newLine.getVector().getY();
+		double Cc=vector.getZ()*newLine.getVector().getZ();
+		if (Aa+Bb+Cc==0)
+			return null;
 		return null;
 	}
 }

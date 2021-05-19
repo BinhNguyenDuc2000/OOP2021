@@ -1,36 +1,35 @@
 package geometry.line;
 import geometry.point.Point;
 import geometry.vector.Vector;
-import math3d.math3d;
+import math3d.Math3D;
 
 //Duong thang duoc tao boi mot vector chi phuong va 1 diem
 public class Line {
-	private Point point;
+	private Point point1;
 	private Vector vector;
 	
 	//Constructors
 	public Line() {
-		
 	}
 	
-	public Line(double x, double y, double z,Point point) {
-		this.point = point;
+	public Line(double x, double y, double z,Point point1) {
+		this.point1 = point1;
 		this.vector = new Vector(x,y,z);
 	}
 	
 	public Line(Point a,Point b) {
 		//To do
-		this.point = a;
+		this.point1 = a;
 		this.vector = new Vector(a,b);
 		
 	}
 
 	//Getters and Setters
-	public Point getPoint() {
-		return point;
+	public Point getPoint1() {
+		return point1;
 	}
 	public void setPoint(Point point) {
-		this.point = point;
+		this.point1 = point;
 	}
 	
 	public Vector getVector() {
@@ -49,30 +48,19 @@ public class Line {
 	}
 	public double getDistance(Point newPoint) {
 		//Lay khoang cach giua duong thang va mot diem
-		//To do
 		if (this.getVector()==null)
 			return 0;
-		Vector newVector = math3d.computeCrossProduct(new Vector(this.getPoint(),newPoint), this.getVector());
+		Vector newVector = Math3D.computeCrossProduct(new Vector(this.getPoint1(),newPoint), this.getVector());
 		double space = newVector.getLength();
 		double bottom = this.getVector().getLength();
 		return space/bottom;
 	}
 	
-	//With vector
-	public double getAngle(Vector newVector) {
-		//Lay goc giua duong thang va mot vector
-		return vector.getAngleS(newVector);
-	}
-	
 	//With line
-	public double getAngle(Line newLine) {
-		//Lay goc giua 2 duong thang
-		return vector.getAngleS(newLine.getVector());
-	}
 	 
 	public boolean isSame(Line newLine) {
 		//Kiem tra 2 duong thang co trung nhau
-		if (this.getVector().equals(newLine.getVector()) && newLine.hasPoint(this.getPoint())){
+		if (this.getVector().isParallel(newLine.getVector()) && newLine.hasPoint(this.getPoint1())){
 			return true;
 		}
 		return false;
