@@ -20,7 +20,7 @@ public class Input extends JFrame {
         JFrame parentFrame = new JFrame();
         Input app1 = new Input();
         JFileChooser fileChooser = new JFileChooser();
-        File fos = new File("D:\\OOP2021-TNA-NTND\\test.txt");
+        File fos = new File("C:\\Git\\OOP2021\\test.txt");
         try {
             FileWriter dos = new FileWriter(fos);
 
