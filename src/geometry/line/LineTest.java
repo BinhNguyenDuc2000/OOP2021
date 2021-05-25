@@ -18,8 +18,10 @@ public class LineTest {
 		System.out.println(d.getDistance(y));
 		
 		System.out.println(d.hasPoint(z));
+		System.out.println(d.hasPoint(a));
 		
 		System.out.println(d.isSame(c));
+		System.out.println(d.isSame(d));
 	}
 
 }

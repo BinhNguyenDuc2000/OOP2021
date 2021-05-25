@@ -55,7 +55,7 @@ public class Vector {
 		return false;
 	}
 	public boolean isParallel(Vector newVector) {
-		if (this.getX()==newVector.getY()&&this.getY()==newVector.getY()&&this.getZ()==newVector.getZ())
+		if (this.getX()==newVector.getX()&&this.getY()==newVector.getY()&&this.getZ()==newVector.getZ())
 			return true;
 		return false;
 	}
