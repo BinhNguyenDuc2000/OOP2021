@@ -2,7 +2,7 @@ package math3d;
 
 import geometry.vector.Vector;
 
-public class Math3D {
+public class math3d {
 	// Tich co huong
 	public static Vector computeCrossProduct(Vector v1, Vector v2) {
 		Vector crossProduct = new Vector();

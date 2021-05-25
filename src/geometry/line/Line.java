@@ -1,7 +1,7 @@
 package geometry.line;
 import geometry.point.Point;
 import geometry.vector.Vector;
-import math3d.Math3D;
+import math3d.math3d;
 
 //Duong thang duoc tao boi mot vector chi phuong va 1 diem
 public class Line {
@@ -55,7 +55,7 @@ public class Line {
 		//Lay khoang cach giua duong thang va mot diem
 		if (this.getVector()==null)
 			return 0;
-		Vector newVector = Math3D.computeCrossProduct(new Vector(this.getPoint1(),newPoint), this.getVector());
+		Vector newVector = math3d.computeCrossProduct(new Vector(this.getPoint1(),newPoint), this.getVector());
 		double space = newVector.getLength();
 		double bottom = this.getVector().getLength();
 		return space/bottom;
