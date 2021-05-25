@@ -4,7 +4,7 @@ import geometry.line.Line;
 import geometry.plane.Plane;
 import geometry.point.Point;
 
-public class Surface{
+public class Surface {
 	public Point a,b,c,d;
 	public Plane plane;
 	//Constructors

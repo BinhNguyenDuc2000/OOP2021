@@ -19,7 +19,7 @@ public class Math3D {
 	}
 	
 	// Kiem tra mot so nam giua 2 so
-	public static boolean isBetween(Double a,Double b,double c) {
+	public static boolean isBetween(double a,double b,double c) {
 		if (a<b) {
 			if (a<=c && c<=b)
 				return true;

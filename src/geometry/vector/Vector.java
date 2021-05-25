@@ -59,15 +59,5 @@ public class Vector {
 			return true;
 		return false;
 	}
-	public double getAngle(Vector newVector) {
-		//Lay goc giua 2 vector trong khoang tu 0 den 180
-		//To do
-		return 0;	
-	}
-	public double getAngleS(Vector newVector) {
-		//Lay goc giua 2 vector trong khoang tu 0 den 90
-		double angle = this.getAngle(newVector);
-		if(angle>180) angle = 180-angle;
-		return angle;
-	}
+	
 }
