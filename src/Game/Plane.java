@@ -1,7 +1,6 @@
 package Game;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -9,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class CaRo extends JFrame implements ActionListener {
+public class Plane extends JFrame implements ActionListener {
     Color background_cl = Color.white;
     Color x_cl = Color.red;
     Color y_cl = Color.blue;
@@ -37,7 +36,7 @@ public class CaRo extends JFrame implements ActionListener {
     JLabel lb;
     JButton newGame_bt, undo_bt, exit_bt;
 
-    public CaRo(String s, int columns, int rows) {
+    public Plane(String s, int columns, int rows) {
         super(s);
         this.setColumn(columns);
         this.setRow(rows);
@@ -86,7 +85,7 @@ public class CaRo extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "New Game") {
-            new CaRo("s", this.getColumn(), this.getRow());
+            new Plane("s", this.getColumn(), this.getRow());
             this.dispose();
         } else if (e.getActionCommand() == "Undo") {
         } else if (e.getActionCommand() == "Exit") {

@@ -1,6 +1,6 @@
 package App;
 
-import Game.CaRo;
+import Game.Plane;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,7 +24,7 @@ public class App extends GUIFrame {
                         JOptionPane.INFORMATION_MESSAGE));
                 int col = Integer.parseInt(JOptionPane.showInputDialog(null, "Nhap col", "col",
                         JOptionPane.INFORMATION_MESSAGE));
-                CaRo test1 = new CaRo("tong ngoc anh", col, row);
+                Plane test1 = new Plane("tong ngoc anh", col, row);
                 test1.setVisible(true);
             }
         });
