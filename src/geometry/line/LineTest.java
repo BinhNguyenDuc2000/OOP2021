@@ -14,8 +14,12 @@ public class LineTest {
 		Point y = new Point(3,2,1);
 		Point z = new Point(2,1,3);
 
-		Line d = new Line(x,y);
-		System.out.println(d.getDistance(z));
+		Line d = new Line(x,z);
+		System.out.println(d.getDistance(y));
+		
+		System.out.println(d.hasPoint(z));
+		
+		System.out.println(d.isSame(c));
 	}
 
 }
