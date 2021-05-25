@@ -31,7 +31,7 @@ public class Input extends JFrame {
 
             if (userSelection == JFileChooser.APPROVE_OPTION) {
                 File fileToSave = fileChooser.getSelectedFile();
-                System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+                System.out.println("Saveg as file: " + fileToSave.getAbsolutePath());
                 app1.setFileURL(fileToSave.getAbsolutePath());
             }
             System.out.println(app1.getFileURL());
