@@ -47,7 +47,7 @@ public class Vector {
 		return Math.sqrt(x*x+y*y+z*z);
 	}
 	
-	//Functions with a vector
+	// Functions with a vector
 	public boolean isZero() {
 		if (x==0 && y==0 && z==0) {
 			return true;
@@ -55,9 +55,22 @@ public class Vector {
 		return false;
 	}
 	public boolean isParallel(Vector newVector) {
-		if (this.getX()==newVector.getX()&&this.getY()==newVector.getY()&&this.getZ()==newVector.getZ())
-			return true;
-		return false;
+		if (this.getX()*newVector.getY()!=this.getY()*newVector.getX())
+			return false;
+		if (this.getY()*newVector.getZ()!=this.getZ()*newVector.getY())
+			return false;
+		if (this.getZ()*newVector.getX()!=this.getX()*newVector.getZ())
+			return false;
+		return true;
+	}
+	
+	// Utility functions
+	public static String getVectorString(Vector newVector) {
+		String vectorString = "";
+		vectorString+=newVector.getX()+",";
+		vectorString+=newVector.getY()+",";
+		vectorString+=newVector.getZ();
+		return vectorString;
 	}
 	
 }

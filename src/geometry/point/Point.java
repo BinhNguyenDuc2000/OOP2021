@@ -10,7 +10,6 @@ public class Point {
 		
 	}
 	public Point(double x, double y, double z) {
-		super();
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -49,5 +48,14 @@ public class Point {
 		double newZ = Math.pow(this.getZ()-newPoint.getZ(),2);
 		return Math.sqrt(newX+newY+newZ);
 	}
+	
+	// Utility functions
+		public static String getPointString(Point newPoint) {
+			String pointString = "";
+			pointString+=newPoint.getX()+",";
+			pointString+=newPoint.getY()+",";
+			pointString+=newPoint.getZ();
+			return pointString;
+		}
 	
 }
