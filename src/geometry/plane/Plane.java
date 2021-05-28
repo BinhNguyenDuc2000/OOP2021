@@ -2,12 +2,12 @@ package geometry.plane;
 
 import geometry.line.Line;
 import geometry.point.Point;
-import geometry.vector.Vector;
+import geometry.vector.Vector2D;
 
 //Mot mat phang duoc tao ra tu mot diem va mot vector phap tuyen
 public class Plane {
 	private Point point1;
-	private Vector vector;
+	private Vector2D vector;
 	public static final String invalidPlane="Invalid plane";
 	public static final String invalidLine="Invalid line";
 	public static final String belongToPlane="Line belong to the plane";
@@ -17,13 +17,13 @@ public class Plane {
 	//Constructors
 	public Plane() {
 	}
-	public Plane(Point point1,Vector vector) {
+	public Plane(Point point1,Vector2D vector) {
 		this.point1 = point1;
 		this.vector = vector;
 	}
 	public Plane(double x,double y,double z,Point point1) {
 		this.point1 = point1;
-		this.vector = new Vector(x,y,z);
+		this.vector = new Vector2D(x,y,z);
 	}
 	public Plane(Point a,Point b,Point c) {
 		//To do
@@ -35,10 +35,10 @@ public class Plane {
 	public void setPoint(Point point1) {
 		this.point1 = point1;
 	}
-	public Vector getVector() {
+	public Vector2D getVector() {
 		return vector;
 	}
-	public void setVector(Vector vector) {
+	public void setVector(Vector2D vector) {
 		this.vector = vector;
 	}
 	public double getD() {

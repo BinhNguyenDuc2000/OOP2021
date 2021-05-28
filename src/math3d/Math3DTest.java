@@ -1,7 +1,7 @@
 package math3d;
 
 import geometry.point.Point;
-import geometry.vector.Vector;
+import geometry.vector.Vector2D;
 
 public class Math3DTest {
 	public static void main(String[] args) {
@@ -28,18 +28,18 @@ public class Math3DTest {
 		System.out.println("--------------------------------------------------");
 		// Vetor test
 		System.out.println("Given vector");
-		Vector a = new Vector(x,y);
-		Vector b = new Vector(y,z);
-		Vector c = new Vector(z,x);
-		System.out.println(Vector.getVectorString(a));
-		System.out.println(Vector.getVectorString(b));
-		System.out.println(Vector.getVectorString(c));
+		Vector2D a = new Vector2D(x,y);
+		Vector2D b = new Vector2D(y,z);
+		Vector2D c = new Vector2D(z,x);
+		System.out.println(Vector2D.getVectorString(a));
+		System.out.println(Vector2D.getVectorString(b));
+		System.out.println(Vector2D.getVectorString(c));
 
 		System.out.println("--------------------------------------------------");
 		System.out.println("Cross Product");
-		System.out.println(Vector.getVectorString(Math3D.computeCrossProduct(a, b)));
-		System.out.println(Vector.getVectorString(Math3D.computeCrossProduct(b, c)));
-		System.out.println(Vector.getVectorString(Math3D.computeCrossProduct(c, a)));
+		System.out.println(Vector2D.getVectorString(Math3D.computeCrossProduct(a, b)));
+		System.out.println(Vector2D.getVectorString(Math3D.computeCrossProduct(b, c)));
+		System.out.println(Vector2D.getVectorString(Math3D.computeCrossProduct(c, a)));
 		
 		System.out.println("--------------------------------------------------");
 		System.out.println("Dot Product");

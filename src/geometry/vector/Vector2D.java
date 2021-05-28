@@ -2,20 +2,20 @@ package geometry.vector;
 
 import geometry.point.Point;
 
-public class Vector {
+public class Vector2D {
 	private double x=0;
 	private double y=0;
 	private double z=0;
 	
 	//Constructors
-	public Vector() {
+	public Vector2D() {
 	}
-	public Vector(double x, double y, double z) {
+	public Vector2D(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
-	public Vector(Point a,Point b) {
+	public Vector2D(Point a,Point b) {
 		//To do
 		this.x = a.getX()-b.getX();
 		this.y = a.getY()-b.getY();
@@ -54,7 +54,7 @@ public class Vector {
 		}
 		return false;
 	}
-	public boolean isParallel(Vector newVector) {
+	public boolean isParallel(Vector2D newVector) {
 		if (this.getX()*newVector.getY()!=this.getY()*newVector.getX())
 			return false;
 		if (this.getY()*newVector.getZ()!=this.getZ()*newVector.getY())
@@ -65,7 +65,7 @@ public class Vector {
 	}
 	
 	// Utility functions
-	public static String getVectorString(Vector newVector) {
+	public static String getVectorString(Vector2D newVector) {
 		String vectorString = "";
 		vectorString+=newVector.getX()+",";
 		vectorString+=newVector.getY()+",";

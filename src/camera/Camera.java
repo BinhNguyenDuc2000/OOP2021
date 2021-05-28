@@ -1,13 +1,17 @@
 package camera;
 
 import geometry.line.Line;
+import geometry.plane.Plane;
 import geometry.point.Point;
 import geometry.surface.Surface;
+import geometry.vector.Vector2D;
 
 public class Camera {
 	private Point cameraPosition;
 	private Surface bottomSurface;
 	public static final double height=999;
+	
+	//Constructor
 	
 	//Getters and setters
 	public Point getCameraPosition() {
@@ -26,7 +30,21 @@ public class Camera {
 	//Functions with point
 	public boolean canBeSeen(Point newPoint) {
 		Line newLine = new Line(cameraPosition,newPoint);
-		return bottomSurface.hasIntersection(newLine);
+		if (bottomSurface.getPosition(newLine)!=Plane.hasIntersection)
+			return false;
+		Point intersection = bottomSurface.getIntersection(newLine);
+		Vector2D newVector = new Vector2D(cameraPosition,intersection);
+		if ((newLine.getVector().getX()*newVector.getX())<0)
+			return false;
+		if ((newLine.getVector().getY()*newVector.getY())<0)
+			return false;
+		if ((newLine.getVector().getZ()*newVector.getZ())<0)
+			return false;
+		if (!bottomSurface.hasPoint(intersection))
+			return false;
+		return true;
+					
+				
 	}
 	
 

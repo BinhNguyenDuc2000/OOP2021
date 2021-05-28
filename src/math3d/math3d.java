@@ -1,14 +1,14 @@
 package math3d;
 
 import geometry.point.Point;
-import geometry.vector.Vector;
+import geometry.vector.Vector2D;
 
 public class Math3D {
 	// Tich co huong
-	public static Vector computeCrossProduct(Vector v1, Vector v2) {
+	public static Vector2D computeCrossProduct(Vector2D v1, Vector2D v2) {
 		if (v1==null||v2==null)
 			return null;
-		Vector crossProduct = new Vector();
+		Vector2D crossProduct = new Vector2D();
 
 		crossProduct.setX(v1.getY()*v2.getZ()-v2.getY()*v1.getZ());
 		crossProduct.setY(v1.getZ()*v2.getX()-v2.getZ()*v1.getX());
@@ -17,7 +17,7 @@ public class Math3D {
 	}
 	
 	// Tich vo huong
-	public static double computeDotProduct(Vector v1,Vector v2) {
+	public static double computeDotProduct(Vector2D v1,Vector2D v2) {
 		if (v1==null||v2==null)
 			return 0;
 		return v1.getX()*v2.getX() + v1.getY()*v2.getY() + v1.getZ()*v2.getZ();

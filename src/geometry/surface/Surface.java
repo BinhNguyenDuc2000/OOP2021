@@ -1,16 +1,15 @@
 package geometry.surface;
 
-import geometry.line.Line;
 import geometry.plane.Plane;
 import geometry.point.Point;
-import geometry.vector.Vector;
+import geometry.vector.Vector2D;
 import math3d.Math3D;
 
 public class Surface extends Plane {
 	private Point point2,point3,point4;
 	//Constructors
 	public Surface(Point point1,Point point2, Point point3, Point point4) {
-		super(point1,math3d.Math3D.computeCrossProduct(new Vector(point1,point2), new Vector(point1,point3)));
+		super(point1,math3d.Math3D.computeCrossProduct(new Vector2D(point1,point2), new Vector2D(point1,point3)));
 		this.point2 = point2;
 		this.point3 = point3;
 		this.point4 = point4;
@@ -43,6 +42,7 @@ public class Surface extends Plane {
 	//Functions with surface
 	
 	//With point
+	@Override
 	public boolean hasPoint(Point newPoint) {
 		//Kiem tra mot diem co nam tren mot mat
 		
@@ -54,21 +54,14 @@ public class Surface extends Plane {
 			return false;
 		
 		//Kiem tra diem co nam giua 4 diem gioi han
-		double sABO = 0.5*Math3D.computeCrossProduct(new Vector(getPoint1(), newPoint), new Vector(point2, newPoint)).getLength();
-		double sBCO = 0.5*Math3D.computeCrossProduct(new Vector(point2, newPoint), new Vector(point3, newPoint)).getLength();
-		double sCDO = 0.5*Math3D.computeCrossProduct(new Vector(point3, newPoint), new Vector(point4, newPoint)).getLength();
-		double sDAO = 0.5*Math3D.computeCrossProduct(new Vector(point4, newPoint), new Vector(getPoint1(), newPoint)).getLength();
-		double sABCD = Math3D.computeCrossProduct(new Vector(getPoint1(), point2), new Vector(point2, point3)).getLength();
+		double sABO = 0.5*Math3D.computeCrossProduct(new Vector2D(getPoint1(), newPoint), new Vector2D(point2, newPoint)).getLength();
+		double sBCO = 0.5*Math3D.computeCrossProduct(new Vector2D(point2, newPoint), new Vector2D(point3, newPoint)).getLength();
+		double sCDO = 0.5*Math3D.computeCrossProduct(new Vector2D(point3, newPoint), new Vector2D(point4, newPoint)).getLength();
+		double sDAO = 0.5*Math3D.computeCrossProduct(new Vector2D(point4, newPoint), new Vector2D(getPoint1(), newPoint)).getLength();
+		double sABCD = Math3D.computeCrossProduct(new Vector2D(getPoint1(), point2), new Vector2D(point2, point3)).getLength();
 		if ((sABO+sBCO+sCDO+sDAO)!=sABCD)
 			return false;
 		return true;
-	}
-	
-	
-	//With line
-	public boolean hasIntersection(Line newLine) {
-		//Kiem tra mot doan thang co di qua mot mat
-		return (hasPoint(getIntersection(newLine))) ? true : false;
 	}
 
 }
