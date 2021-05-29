@@ -9,9 +9,10 @@ import geometry.vector.Vector2D;
 public class Camera {
 	private Point cameraPosition;
 	private Surface bottomSurface;
-	public static final double height=999;
+	public static final double focalLength=999;
 	
 	//Constructor
+	
 	
 	//Getters and setters
 	public Point getCameraPosition() {
@@ -30,6 +31,8 @@ public class Camera {
 	//Functions with point
 	public boolean canBeSeen(Point newPoint) {
 		Line newLine = new Line(cameraPosition,newPoint);
+		if (bottomSurface==null)
+			return false;
 		if (bottomSurface.getPosition(newLine)!=Plane.hasIntersection)
 			return false;
 		Point intersection = bottomSurface.getIntersection(newLine);

@@ -3,20 +3,85 @@ package room;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
 import camera.Camera;
 import geometry.cuboid.RectangularCuboid;
 import geometry.line.LineSegment;
 import geometry.point.Point;
+import geometry.surface.Surface;
 import obstacle.Obstacle;
 
 public class Room extends RectangularCuboid {
 	private ArrayList<Camera> cameraList = new ArrayList<Camera>();
 	private ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
 	
+	//Constructor
+	public Room(Point a, Point b, Point c, Point d, Point e, Point f, Point g, Point h) {
+		super(a, b, c, d, e, f, g, h);
+	}
+	
+	
 	//Setting up the room
 	public void addCamera(Camera newCamera) {
 		cameraList.add(newCamera);
 	}
+	public void addCamera(Point cameraPosition,double vfov,double hfov) {
+		Camera newCamera = new Camera();
+		newCamera.setCameraPosition(cameraPosition);
+		double halfLength = Math.tan(vfov/2)*Camera.focalLength;
+		double halfWidth = Math.tan(hfov/2)*Camera.focalLength;
+		if (getABCD().hasPoint(cameraPosition)) {
+			Point bottomCenterPoint = new Point(cameraPosition.getX(),cameraPosition.getY(),cameraPosition.getZ()+Camera.focalLength);
+			Point point1 = new Point(bottomCenterPoint.getX()-halfLength/2,bottomCenterPoint.getY()-halfWidth/2,bottomCenterPoint.getZ());
+			Point point2 = new Point(bottomCenterPoint.getX()+halfLength/2,bottomCenterPoint.getY()-halfWidth/2,bottomCenterPoint.getZ());
+			Point point3 = new Point(bottomCenterPoint.getX()+halfLength/2,bottomCenterPoint.getY()+halfWidth/2,bottomCenterPoint.getZ());
+			Point point4 = new Point(bottomCenterPoint.getX()-halfLength/2,bottomCenterPoint.getY()+halfWidth/2,bottomCenterPoint.getZ());
+			newCamera.setBottomSurface(new Surface(point1, point2, point3, point4));
+		}
+		if (getEFGH().hasPoint(cameraPosition)) {
+			Point bottomCenterPoint = new Point(cameraPosition.getX(),cameraPosition.getY(),cameraPosition.getZ()-Camera.focalLength);
+			Point point1 = new Point(bottomCenterPoint.getX()-halfLength/2,bottomCenterPoint.getY()-halfWidth/2,bottomCenterPoint.getZ());
+			Point point2 = new Point(bottomCenterPoint.getX()+halfLength/2,bottomCenterPoint.getY()-halfWidth/2,bottomCenterPoint.getZ());
+			Point point3 = new Point(bottomCenterPoint.getX()+halfLength/2,bottomCenterPoint.getY()+halfWidth/2,bottomCenterPoint.getZ());
+			Point point4 = new Point(bottomCenterPoint.getX()-halfLength/2,bottomCenterPoint.getY()+halfWidth/2,bottomCenterPoint.getZ());
+			newCamera.setBottomSurface(new Surface(point1, point2, point3, point4));
+		}
+		if (getABFE().hasPoint(cameraPosition)) {
+			Point bottomCenterPoint = new Point(cameraPosition.getX(),cameraPosition.getY()+Camera.focalLength,cameraPosition.getZ());
+			Point point1 = new Point(bottomCenterPoint.getX()-halfLength,bottomCenterPoint.getY(),bottomCenterPoint.getZ()-halfWidth);
+			Point point2 = new Point(bottomCenterPoint.getX()+halfLength,bottomCenterPoint.getY(),bottomCenterPoint.getZ()-halfWidth);
+			Point point3 = new Point(bottomCenterPoint.getX()+halfLength,bottomCenterPoint.getY(),bottomCenterPoint.getZ()+halfWidth);
+			Point point4 = new Point(bottomCenterPoint.getX()-halfLength,bottomCenterPoint.getY(),bottomCenterPoint.getZ()+halfWidth);
+			newCamera.setBottomSurface(new Surface(point1, point2, point3, point4));
+		}
+		if (getCDHG().hasPoint(cameraPosition)) {
+			Point bottomCenterPoint = new Point(cameraPosition.getX(),cameraPosition.getY()-Camera.focalLength,cameraPosition.getZ());
+			Point point1 = new Point(bottomCenterPoint.getX()-halfLength,bottomCenterPoint.getY(),bottomCenterPoint.getZ()-halfWidth);
+			Point point2 = new Point(bottomCenterPoint.getX()+halfLength,bottomCenterPoint.getY(),bottomCenterPoint.getZ()-halfWidth);
+			Point point3 = new Point(bottomCenterPoint.getX()+halfLength,bottomCenterPoint.getY(),bottomCenterPoint.getZ()+halfWidth);
+			Point point4 = new Point(bottomCenterPoint.getX()-halfLength,bottomCenterPoint.getY(),bottomCenterPoint.getZ()+halfWidth);
+			newCamera.setBottomSurface(new Surface(point1, point2, point3, point4));
+		}
+		if (getBCGF().hasPoint(cameraPosition)) {
+			Point bottomCenterPoint = new Point(cameraPosition.getX()-Camera.focalLength,cameraPosition.getY(),cameraPosition.getZ());
+			Point point1 = new Point(bottomCenterPoint.getX(),bottomCenterPoint.getY()-halfLength,bottomCenterPoint.getZ()-halfWidth);
+			Point point2 = new Point(bottomCenterPoint.getX(),bottomCenterPoint.getY()+halfLength,bottomCenterPoint.getZ()-halfWidth);
+			Point point3 = new Point(bottomCenterPoint.getX(),bottomCenterPoint.getY()+halfLength,bottomCenterPoint.getZ()+halfWidth);
+			Point point4 = new Point(bottomCenterPoint.getX(),bottomCenterPoint.getY()-halfLength,bottomCenterPoint.getZ()+halfWidth);
+			newCamera.setBottomSurface(new Surface(point1, point2, point3, point4));
+		}
+		if (getDAEH().hasPoint(cameraPosition)) {
+			Point bottomCenterPoint = new Point(cameraPosition.getX()+Camera.focalLength,cameraPosition.getY(),cameraPosition.getZ());
+			Point point1 = new Point(bottomCenterPoint.getX(),bottomCenterPoint.getY()-halfLength,bottomCenterPoint.getZ()-halfWidth);
+			Point point2 = new Point(bottomCenterPoint.getX(),bottomCenterPoint.getY()+halfLength,bottomCenterPoint.getZ()-halfWidth);
+			Point point3 = new Point(bottomCenterPoint.getX(),bottomCenterPoint.getY()+halfLength,bottomCenterPoint.getZ()+halfWidth);
+			Point point4 = new Point(bottomCenterPoint.getX(),bottomCenterPoint.getY()-halfLength,bottomCenterPoint.getZ()+halfWidth);
+			newCamera.setBottomSurface(new Surface(point1, point2, point3, point4));
+		}
+		
+		cameraList.add(newCamera);
+	}
+	
 	
 	public void addObstacle(Obstacle newObstacle) {
 		obstacleList.add(newObstacle);
@@ -33,7 +98,7 @@ public class Room extends RectangularCuboid {
 			Iterator<Obstacle> obstacleIterator = obstacleList.iterator();
 			while(obstacleIterator.hasNext()) {
 				Obstacle newObstacle = obstacleIterator.next();
-				Iterator<Point> intersectionIterator = newObstacle.getIntersection(newLineSegment).iterator();
+				Iterator<Point> intersectionIterator = newObstacle.getIntersectionList(newLineSegment).iterator();
 				while(intersectionIterator.hasNext()) {
 					if (newLineSegment.hasPoint(intersectionIterator.next()))
 						return false;

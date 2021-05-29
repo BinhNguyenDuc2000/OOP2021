@@ -59,8 +59,9 @@ public class Surface extends Plane {
 		double sBCO = 0.5*Math3D.computeCrossProduct(new Vector2D(point2, newPoint), new Vector2D(point3, newPoint)).getLength();
 		double sCDO = 0.5*Math3D.computeCrossProduct(new Vector2D(point3, newPoint), new Vector2D(point4, newPoint)).getLength();
 		double sDAO = 0.5*Math3D.computeCrossProduct(new Vector2D(point4, newPoint), new Vector2D(getPoint1(), newPoint)).getLength();
+		double areaSum = sABO+sBCO+sCDO+sDAO;
 		double sABCD = Math3D.computeCrossProduct(new Vector2D(getPoint1(), point2), new Vector2D(point2, point3)).getLength();
-		if ((sABO+sBCO+sCDO+sDAO)!=sABCD)
+		if (!Math3D.isClose(areaSum, sABCD))
 			return false;
 		return true;
 	}

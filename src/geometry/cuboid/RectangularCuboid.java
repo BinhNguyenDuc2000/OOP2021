@@ -120,6 +120,43 @@ public class RectangularCuboid {
 	public void setH(Point h) {
 		this.h = h;
 	}
+	
+	public Surface getABCD() {
+		return ABCD;
+	}
+	public void setABCD(Surface aBCD) {
+		ABCD = aBCD;
+	}
+	public Surface getABFE() {
+		return ABFE;
+	}
+	public void setABFE(Surface aBFE) {
+		ABFE = aBFE;
+	}
+	public Surface getBCGF() {
+		return BCGF;
+	}
+	public void setBCGF(Surface bCGF) {
+		BCGF = bCGF;
+	}
+	public Surface getCDHG() {
+		return CDHG;
+	}
+	public void setCDHG(Surface cDHG) {
+		CDHG = cDHG;
+	}
+	public Surface getDAEH() {
+		return DAEH;
+	}
+	public void setDAEH(Surface dAEH) {
+		DAEH = dAEH;
+	}
+	public Surface getEFGH() {
+		return EFGH;
+	}
+	public void setEFGH(Surface eFGH) {
+		EFGH = eFGH;
+	}
 	//Function with rectangular cuboid
 	public boolean isValid() {
 		//Kiem tra xem khoi da cho co dung la hinh hop chu nhat
@@ -143,7 +180,7 @@ public class RectangularCuboid {
 //	}
 //	
 	//With line
-	public ArrayList<Point> getIntersection(Line newLine) {
+	public ArrayList<Point> getIntersectionList(Line newLine) {
 		//Lay tap cac giao diem cua hop voi duong thang
 		ArrayList<Point> intersectionList = new ArrayList<Point>();
 		if (ABCD.getPosition(newLine)==Plane.hasIntersection) {

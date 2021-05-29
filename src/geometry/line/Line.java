@@ -49,7 +49,7 @@ public class Line {
 	//With point
 	public boolean hasPoint(Point newPoint) {
 		//Kiem tra duong thang co chua diem
-		return getDistance(newPoint)==0 ? true : false;
+		return Math3D.isClose(getDistance(newPoint),0) ? true : false;
 	}
 	public double getDistance(Point newPoint) {
 		//Lay khoang cach giua duong thang va mot diem

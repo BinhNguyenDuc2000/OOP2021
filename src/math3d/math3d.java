@@ -37,14 +37,11 @@ public class Math3D {
 		return false;
 	}
 	
-	// Kiem tra mot diem co nam giua 2 diem
-	// Kiem tra C co nam giua A va B 
-	public static boolean isBetweenPoint(Point a, Point b, Point c) {
-		if (!isBetweenDouble(a.getX(), b.getX(), c.getX()))
+	// Kiem tra 2 so co xap xi bang nhau
+	public static boolean isClose(double a,double b) {
+		if (a>=b+0.01)
 			return false;
-		if (!isBetweenDouble(a.getY(), b.getY(), c.getY()))
-			return false;
-		if (!isBetweenDouble(a.getZ(), b.getZ(), c.getZ()))
+		if (a<=b-0.01)
 			return false;
 		return true;
 	}
@@ -58,4 +55,5 @@ public class Math3D {
 		double z = (point1.getZ() + point2.getZ() + point3.getZ() + point4.getZ())/4;
 		return new Point(x,y,z);
 	}
+	
 }

@@ -3,6 +3,7 @@ package geometry.plane;
 import geometry.line.Line;
 import geometry.point.Point;
 import geometry.vector.Vector2D;
+import math3d.Math3D;
 
 //Mot mat phang duoc tao ra tu mot diem va mot vector phap tuyen
 public class Plane {
@@ -52,7 +53,7 @@ public class Plane {
 	//With point
 	public boolean hasPoint(Point newPoint) {
 		//Kiem tra mot diem co nam tren mat phang
-		return getDistance(newPoint)==0 ? true : false;
+		return Math3D.isClose(getDistance(newPoint),0) ? true : false;
 	}
 	public double getDistance(Point newPoint) {
 		//Lay khoang cach giua mat phang va mot diem
