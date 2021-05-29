@@ -43,7 +43,6 @@ public class Camera {
 		if (!bottomSurface.hasPoint(intersection))
 			return false;
 		return true;
-					
 				
 	}
 	

@@ -1,12 +1,22 @@
 package geometry.cuboid;
 
+import java.util.ArrayList;
+
 import geometry.line.Line;
+import geometry.plane.Plane;
 import geometry.point.Point;
+import geometry.surface.Surface;
 
 public class RectangularCuboid {
 	private Point a,b,c,d;	//4 dinh thuoc mat day
 	private Point e,f,g,h;	//4 dinh thuoc mat tren
 	private double height;
+	private Surface ABCD;
+	private Surface ABFE;
+	private Surface BCGF;
+	private Surface CDHG;
+	private Surface DAEH;
+	private Surface EFGH;
 	//Ham lay dinh thuoc mat tren
 	private Point getPoint(Point oldPoint) {
 		Point newPoint = new Point();
@@ -28,6 +38,32 @@ public class RectangularCuboid {
 		this.g=getPoint(c);
 		this.h=getPoint(h);
 		this.height=height;
+		ABCD = new Surface(a, b, c, d);
+		ABFE = new Surface(a, b, f, e);
+		BCGF = new Surface(b, c, g, f);
+		CDHG = new Surface(c, d, h, g);
+		DAEH = new Surface(d, a, e, h);
+		EFGH = new Surface(e, f, g, h);
+		
+	}
+	
+	public RectangularCuboid(Point a, Point b, Point c, Point d, Point e, Point f, Point g, Point h) {
+		super();
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.d = d;
+		this.e = e;
+		this.f = f;
+		this.g = g;
+		this.h = h;
+		height = this.a.getZ()-this.e.getZ();
+		ABCD = new Surface(a, b, c, d);
+		ABFE = new Surface(a, b, f, e);
+		BCGF = new Surface(b, c, g, f);
+		CDHG = new Surface(c, d, h, g);
+		DAEH = new Surface(d, a, e, h);
+		EFGH = new Surface(e, f, g, h);
 	}
 	//Getters and Setters
 	public Point getA() {
@@ -91,17 +127,55 @@ public class RectangularCuboid {
 		return true;
 	}
 	
-	//With point
-	public boolean hasPoint(Point newPoint) {
-		//Kiem tra mot diem co nam trong hop
-		//To do
-		return true;
-	}
-	
+//	//With point
+//	public boolean hasPoint(Point newPoint) {
+//		//Kiem tra mot diem co nam trong hop
+//		if (new Surface(a, b, c, d).hasPoint(newPoint))
+//			return true;
+//		if (new Surface(a, b, f, e).hasPoint(newPoint))
+//			return true;
+//		if (new Surface(e, f, g, f).hasPoint(newPoint))
+//			return true;
+//		if (new Surface(c, d, h, g).hasPoint(newPoint))
+//			return true;
+//		if (new Surface())
+//		return false;
+//	}
+//	
 	//With line
-	public boolean hasIntersection(Line newLine) {
-		//Kiem tra mot duong thang co di qua hop
-		//To do
-		return true;
+	public ArrayList<Point> getIntersection(Line newLine) {
+		//Lay tap cac giao diem cua hop voi duong thang
+		ArrayList<Point> intersectionList = new ArrayList<Point>();
+		if (ABCD.getPosition(newLine)==Plane.hasIntersection) {
+			Point intersectionPoint = ABCD.getIntersection(newLine);
+			if (ABCD.hasPoint(intersectionPoint))
+				intersectionList.add(intersectionPoint);
+		}
+		if (ABFE.getPosition(newLine)==Plane.hasIntersection) {
+			Point intersectionPoint = ABFE.getIntersection(newLine);
+			if (ABFE.hasPoint(intersectionPoint))
+				intersectionList.add(intersectionPoint);
+		}
+		if (BCGF.getPosition(newLine)==Plane.hasIntersection) {
+			Point intersectionPoint = BCGF.getIntersection(newLine);
+			if (BCGF.hasPoint(intersectionPoint))
+				intersectionList.add(intersectionPoint);
+		}
+		if (CDHG.getPosition(newLine)==Plane.hasIntersection) {
+			Point intersectionPoint = CDHG.getIntersection(newLine);
+			if (CDHG.hasPoint(intersectionPoint))
+				intersectionList.add(intersectionPoint);
+		}
+		if (DAEH.getPosition(newLine)==Plane.hasIntersection) {
+			Point intersectionPoint = DAEH.getIntersection(newLine);
+			if (DAEH.hasPoint(intersectionPoint))
+				intersectionList.add(intersectionPoint);
+		}
+		if (EFGH.getPosition(newLine)==Plane.hasIntersection) {
+			Point intersectionPoint = EFGH.getIntersection(newLine);
+			if (EFGH.hasPoint(intersectionPoint))
+				intersectionList.add(intersectionPoint);
+		}
+		return intersectionList;
 	}
 }

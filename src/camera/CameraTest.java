@@ -12,9 +12,9 @@ public class CameraTest {
 		Point point4 = new Point(0,1,0);
 		
 		Point point5 = new Point(1,1,0);
-		Point point6 = new Point(0.5,0.5,2);
-		Point point7 = new Point(0.5,0.5,5);
-		Point point8 = new Point(0.5,0.5,4);
+		Point point6 = new Point(0.5,0.5,1);
+		Point point7 = new Point(0.5,0.5,0.5);
+		Point point8 = new Point(0.9,0.9,1);
 		
 		Surface newSurface = new Surface(point1,point2,point3,point4);
 		

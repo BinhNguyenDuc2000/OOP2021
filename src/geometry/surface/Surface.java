@@ -54,6 +54,7 @@ public class Surface extends Plane {
 			return false;
 		
 		//Kiem tra diem co nam giua 4 diem gioi han
+		//Thong qua tinh dien tich cac tam giac
 		double sABO = 0.5*Math3D.computeCrossProduct(new Vector2D(getPoint1(), newPoint), new Vector2D(point2, newPoint)).getLength();
 		double sBCO = 0.5*Math3D.computeCrossProduct(new Vector2D(point2, newPoint), new Vector2D(point3, newPoint)).getLength();
 		double sCDO = 0.5*Math3D.computeCrossProduct(new Vector2D(point3, newPoint), new Vector2D(point4, newPoint)).getLength();

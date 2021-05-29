@@ -31,7 +31,7 @@ public class LineSegment extends Line{
 	@Override
 	public boolean hasPoint(Point newPoint) {
 		//Kiem tra mot diem co nam tren mot doan thang
-		if (!this.hasPoint(newPoint))
+		if (!super.hasPoint(newPoint))
 			return false;
 		//Kiem tra diem do nam giua 2 diem point 1 va 2
 		//B nam giua A va C neu AB+BC=CA
