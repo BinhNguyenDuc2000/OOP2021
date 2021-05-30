@@ -12,6 +12,15 @@ public class Camera {
 	public static final double focalLength=999;
 	
 	//Constructor
+	public Camera() {
+		
+	}
+	
+	public Camera(Point cameraPosition, Surface bottomSurface) {
+		super();
+		this.cameraPosition = cameraPosition;
+		this.bottomSurface = bottomSurface;
+	}
 	
 	
 	//Getters and setters

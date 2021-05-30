@@ -1,6 +1,7 @@
 package geometry.line;
 
 import geometry.point.Point;
+import math3d.Math3D;
 //Doan thang duoc tao boi mot duong thang va hai diem
 public class LineSegment extends Line{
 	private Point point2;
@@ -38,7 +39,7 @@ public class LineSegment extends Line{
 		double ab = this.getPoint1().getDistance(newPoint);
 		double bc = this.getPoint2().getDistance(newPoint);
 		double ac = this.getPoint1().getDistance(this.getPoint2());
-		if (ab+bc==ac)
+		if (Math3D.isClose(ab+bc,ac))
 			return true;
 		return false;
 	}
