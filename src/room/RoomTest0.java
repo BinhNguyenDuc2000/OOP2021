@@ -53,11 +53,15 @@ public class RoomTest0 {
 		Point point6 = new Point(0.7,0.5,0.5);
 		Point point7 = new Point(0.95,0,0.5);
 		Point point8 = new Point(1,0,0.5);
+		Point point9 = new Point(-1,0,1);
+		Point point10 = new Point(1,1,-1);
 		
 		System.out.println(newRoom.isVisible(point5));
 		System.out.println(newRoom.isVisible(point6));
 		System.out.println(newRoom.isVisible(point7));
 		System.out.println(newRoom.isVisible(point8));
+		System.out.println(newRoom.isVisible(point9));
+		System.out.println(newRoom.isVisible(point10));
 		System.out.println(newRoom.getVisiblePercentage());
 		
 	}

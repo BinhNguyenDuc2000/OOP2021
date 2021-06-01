@@ -33,7 +33,8 @@ public class RoomTest3 {
 		Room newRoom = demoRoom();
 		newRoom.addObstacle(demoObstacle());
 		newRoom.addCamera(new Point(1,0.5,1), 90, (2*Math.atan(0.5))/0.01745);
-		System.out.println(newRoom.getVisiblePercentage());
+		//System.out.println(newRoom.getVisiblePercentage());
+		newRoom.displayABCD();
 	}
 
 }
