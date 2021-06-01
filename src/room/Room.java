@@ -16,11 +16,38 @@ public class Room extends RectangularCuboid {
 	public static final int accuracy = 100000000;
 	private ArrayList<Camera> cameraList = new ArrayList<Camera>();
 	private ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
+	private PixelMap mapABCD=null;
+	private PixelMap mapABEF=null;
+	private PixelMap mapBCGF=null;
+	private PixelMap mapCDHG=null;
+	private PixelMap mapDAEH=null;
+	private PixelMap mapEFGH=null;
+	
+	
+	//Getters and setters
+	
+	public ArrayList<Camera> getCameraList() {
+		return cameraList;
+	}
+
+	public void setCameraList(ArrayList<Camera> cameraList) {
+		this.cameraList = cameraList;
+	}
+
+	public ArrayList<Obstacle> getObstacleList() {
+		return obstacleList;
+	}
+
+	public void setObstacleList(ArrayList<Obstacle> obstacleList) {
+		this.obstacleList = obstacleList;
+	}
 
 	// Constructor
 	public Room(Point a, Point b, Point c, Point d, Point e, Point f, Point g, Point h) {
 		super(a, b, c, d, e, f, g, h);
 	}
+
+	
 
 	// Setting up the room
 	public void addCamera(Camera newCamera) {
@@ -194,6 +221,8 @@ public class Room extends RectangularCuboid {
 
 	// Function for each surface
 	public PixelMap displayABCD() {
+		if (mapABCD!=null)
+			return mapABCD;
 		ArrayList<Pixel> pixelList = new ArrayList<Pixel>();
 		int row = (int) ((getC().getX() - getA().getX()) / Pixel.pixelSize);
 		int column = (int) ((getC().getY() - getA().getY()) / Pixel.pixelSize);
@@ -216,10 +245,13 @@ public class Room extends RectangularCuboid {
 		newPixelMap.setColumn(column);
 		newPixelMap.setRow(row);
 		newPixelMap.setPixelList(pixelList);
-		return newPixelMap;
+		mapABCD=newPixelMap;
+		return mapABCD;
 	}
 
 	public PixelMap displayEFGH() {
+		if (mapEFGH!=null)
+			return mapEFGH;
 		ArrayList<Pixel> pixelList = new ArrayList<Pixel>();
 		int row = (int) ((getG().getX() - getE().getX()) / Pixel.pixelSize);
 		int column = (int) ((getG().getY() - getE().getY()) / Pixel.pixelSize);
@@ -242,10 +274,13 @@ public class Room extends RectangularCuboid {
 		newPixelMap.setColumn(column);
 		newPixelMap.setRow(row);
 		newPixelMap.setPixelList(pixelList);
-		return newPixelMap;
+		mapEFGH=newPixelMap;
+		return mapEFGH;
 	}
 	
 	public PixelMap displayABEF() {
+		if (mapABEF!=null)
+			return mapABEF;
 		ArrayList<Pixel> pixelList = new ArrayList<Pixel>();
 		int row = (int) ((getF().getZ() - getA().getZ()) / Pixel.pixelSize);
 		int column = (int) ((getF().getX() - getA().getX()) / Pixel.pixelSize);
@@ -268,10 +303,13 @@ public class Room extends RectangularCuboid {
 		newPixelMap.setColumn(column);
 		newPixelMap.setRow(row);
 		newPixelMap.setPixelList(pixelList);
-		return newPixelMap;
+		mapABEF=newPixelMap;
+		return mapABEF;
 	}
 	
 	public PixelMap displayCDHG() {
+		if (mapCDHG!=null)
+			return mapCDHG;
 		ArrayList<Pixel> pixelList = new ArrayList<Pixel>();
 		int row = (int) ((getG().getZ() - getD().getZ()) / Pixel.pixelSize);
 		int column = (int) ((getG().getX() - getD().getX()) / Pixel.pixelSize);
@@ -294,10 +332,13 @@ public class Room extends RectangularCuboid {
 		newPixelMap.setColumn(column);
 		newPixelMap.setRow(row);
 		newPixelMap.setPixelList(pixelList);
-		return newPixelMap;
+		mapCDHG=newPixelMap;
+		return mapCDHG;
 	}
 	
-	public PixelMap displayBCFG() {
+	public PixelMap displayBCGF() {
+		if (mapBCGF!=null)
+			return mapBCGF;
 		ArrayList<Pixel> pixelList = new ArrayList<Pixel>();
 		int row = (int) ((getG().getZ() - getB().getZ()) / Pixel.pixelSize);
 		int column = (int) ((getG().getY() - getB().getY()) / Pixel.pixelSize);
@@ -320,10 +361,13 @@ public class Room extends RectangularCuboid {
 		newPixelMap.setColumn(column);
 		newPixelMap.setRow(row);
 		newPixelMap.setPixelList(pixelList);
-		return newPixelMap;
+		mapBCGF=newPixelMap;
+		return mapBCGF;
 	}
 	
 	public PixelMap displayDAEH() {
+		if (mapDAEH!=null)
+			return mapDAEH;
 		ArrayList<Pixel> pixelList = new ArrayList<Pixel>();
 		int row = (int) ((getH().getZ() - getA().getZ()) / Pixel.pixelSize);
 		int column = (int) ((getH().getY() - getA().getY()) / Pixel.pixelSize);
@@ -346,6 +390,7 @@ public class Room extends RectangularCuboid {
 		newPixelMap.setColumn(column);
 		newPixelMap.setRow(row);
 		newPixelMap.setPixelList(pixelList);
-		return newPixelMap;
+		mapDAEH=newPixelMap;
+		return mapDAEH;
 	}
 }
