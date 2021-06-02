@@ -1,5 +1,8 @@
 package Game;
 
+import pixel.Pixel;
+import pixel.PixelMap;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -8,10 +11,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Plane extends JFrame implements ActionListener {
+public class Map extends JFrame implements ActionListener {
     Color background_cl = Color.white;
     Color x_cl = Color.red;
     Color y_cl = Color.blue;
+
+    public PixelMap getCurrentMap() {
+        return currentMap;
+    }
+
+    public void setCurrentMap(PixelMap currentMap) {
+        this.currentMap = currentMap;
+    }
+
+    PixelMap currentMap;
+
 
     public int getColumn() {
         return column;
@@ -36,32 +50,37 @@ public class Plane extends JFrame implements ActionListener {
     JLabel lb;
     JButton newGame_bt, undo_bt, exit_bt;
 
-    public Plane(String s, int columns, int rows) {
+    public Map(String s, PixelMap currentMap) {
         super(s);
-        this.setColumn(columns);
-        this.setRow(rows);
-        int column = this.getColumn();
-        int row = this.getRow();
-        JButton b[][] = new JButton[column + 2][row + 2];
-        System.out.printf("col %d\n", column);
-        System.out.printf("row %d\n", row);
+        int column = currentMap.getColumn();
+        int row = currentMap.getRow();
+
+        this.setColumn(column);
+        this.setRow(row);
+        this.setCurrentMap(currentMap);
+
+        JButton b[][] = new JButton[row + 2][column + 2];
+
 
         cn = this.getContentPane();
         pn = new JPanel();
-        pn.setLayout(new GridLayout(column, row));
-        for (int i = 0; i <= column + 1; i++)
-            for (int j = 0; j <= row + 1; j++) {
+        pn.setLayout(new GridLayout(row, column));
+        for (int i = 0; i < row ; i++)
+            for (int j = 0; j < column ; j++) {
                 b[i][j] = new JButton(" ");
                 b[i][j].setActionCommand(i + " " + j);
-                if (j % 2 == 0) {
+                int indexOfCheckPixel = i * column + j;
+                boolean visiable = currentMap.getPixelList().get(indexOfCheckPixel).isVisible();
+
+                if (visiable) {
                     b[i][j].setBackground(background_cl);
                 } else {
                     b[i][j].setBackground(Color.black);
                 }
                 b[i][j].addActionListener(this);
             }
-        for (int i = 1; i <= column; i++)
-            for (int j = 1; j <= row; j++)
+        for (int i = 0; i < row; i++)
+            for (int j = 0; j < column; j++)
                 pn.add(b[i][j]);
         newGame_bt = new JButton("New Game");
         undo_bt = new JButton("Undo");
@@ -85,7 +104,7 @@ public class Plane extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "New Game") {
-            new Plane("s", this.getColumn(), this.getRow());
+            new Map("s", this.getCurrentMap());
             this.dispose();
         } else if (e.getActionCommand() == "Undo") {
         } else if (e.getActionCommand() == "Exit") {

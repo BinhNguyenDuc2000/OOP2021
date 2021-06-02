@@ -9,6 +9,7 @@ import geometry.point.Point;
 public class FinalTest1 {
 	public static void main(String[] args) {
 		Input newInput = new Input();
+
 		
 		File fos = new File("F:\\Study\\2020-2\\OOP\\FinalProject\\FinalProjectTNA\\test.txt");
 
