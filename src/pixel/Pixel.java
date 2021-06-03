@@ -4,7 +4,7 @@ import geometry.point.Point;
 import math3d.Math3D;
 
 public class Pixel extends Point{
-	public static double pixelSize=1;
+	public static double pixelSize=0.1;
 
 	private boolean isVisible;
 	

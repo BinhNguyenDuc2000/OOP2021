@@ -238,7 +238,6 @@ public class Room extends RectangularCuboid {
 				Pixel newPixel = new Pixel(point1, point2, point3, point4);
 				newPixel.setVisible(isVisible(newPixel));
 				pixelList.add(newPixel);
-				System.out.println(isVisible(newPixel));
 			}
 		}
 		PixelMap newPixelMap = new PixelMap();
@@ -267,7 +266,7 @@ public class Room extends RectangularCuboid {
 				Pixel newPixel = new Pixel(point1, point2, point3, point4);
 				newPixel.setVisible(isVisible(newPixel));
 				pixelList.add(newPixel);
-				System.out.println(isVisible(newPixel));
+
 			}
 		}
 		PixelMap newPixelMap = new PixelMap();
@@ -296,7 +295,7 @@ public class Room extends RectangularCuboid {
 				Pixel newPixel = new Pixel(point1, point2, point3, point4);
 				newPixel.setVisible(isVisible(newPixel));
 				pixelList.add(newPixel);
-				System.out.println(isVisible(newPixel));
+
 			}
 		}
 		PixelMap newPixelMap = new PixelMap();
@@ -325,7 +324,7 @@ public class Room extends RectangularCuboid {
 				Pixel newPixel = new Pixel(point1, point2, point3, point4);
 				newPixel.setVisible(isVisible(newPixel));
 				pixelList.add(newPixel);
-				System.out.println(isVisible(newPixel));
+
 			}
 		}
 		PixelMap newPixelMap = new PixelMap();
@@ -354,7 +353,7 @@ public class Room extends RectangularCuboid {
 				Pixel newPixel = new Pixel(point1, point2, point3, point4);
 				newPixel.setVisible(isVisible(newPixel));
 				pixelList.add(newPixel);
-				System.out.println(isVisible(newPixel));
+
 			}
 		}
 		PixelMap newPixelMap = new PixelMap();
@@ -383,7 +382,7 @@ public class Room extends RectangularCuboid {
 				Pixel newPixel = new Pixel(point1, point2, point3, point4);
 				newPixel.setVisible(isVisible(newPixel));
 				pixelList.add(newPixel);
-				System.out.println(isVisible(newPixel));
+
 			}
 		}
 		PixelMap newPixelMap = new PixelMap();

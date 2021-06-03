@@ -120,7 +120,7 @@ public class RoomTest2 {
 		newRoom.displayCDHG();
 		System.out.println("----------------");
 		System.out.println("BCGF");
-		newRoom.displayBCFG();
+//		newRoom.d();
 		System.out.println("----------------");
 		System.out.println("DAEH");
 		newRoom.displayDAEH();
