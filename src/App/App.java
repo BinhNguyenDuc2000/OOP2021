@@ -16,9 +16,7 @@ public class App extends GUIFrame {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int index =  1;
 
-                System.out.println(pmap.getPixelList().get(index).isVisible());
                 Map test1 = new Map(title,  pmap);
                 test1.setVisible(true);
             }
@@ -108,27 +106,6 @@ public class App extends GUIFrame {
             }
         });
 
-//        JButton abcd = new JButton("ABCD");// tạo button
-//        abcd.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int row = ABCD.getRow();
-//                int col = ABCD.getColumn();
-//                System.out.println(row);
-//                System.out.println(col);
-//
-//                int index =  1;
-//
-//                System.out.println(ABCD.getPixelList().get(index).isVisible());
-//                Plane test1 = new Plane("tong ngoc anh", col,row );
-//                test1.setVisible(true);
-//            }
-//        });
-//        abcd.setBounds(130, 50, 100, 40);
-//        add(abcd);// thêm button vào JFrame
-//        add(addButton);
-//        add(delButton);
-//        add(displayButton);
 
 
     }

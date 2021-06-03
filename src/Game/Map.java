@@ -82,15 +82,15 @@ public class Map extends JFrame implements ActionListener {
         for (int i = 0; i < row; i++)
             for (int j = 0; j < column; j++)
                 pn.add(b[i][j]);
-        newGame_bt = new JButton("New Game");
-        undo_bt = new JButton("Undo");
-        newGame_bt.addActionListener(this);
-        undo_bt.addActionListener(this);
+//        newGame_bt = new JButton("New Game");
+//        undo_bt = new JButton("Undo");
+//        newGame_bt.addActionListener(this);
+//        undo_bt.addActionListener(this);
         cn.add(pn);
         pn2 = new JPanel();
         pn2.setLayout(new FlowLayout());
-        pn2.add(newGame_bt);
-        pn2.add(undo_bt);
+//        pn2.add(newGame_bt);
+//        pn2.add(undo_bt);
         cn.add(pn2, "North");
 //        this.setVisible(true);
         this.setSize(500, 500);
