@@ -5,20 +5,21 @@ import geometry.point.Point;
 import pixel.PixelMap;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class App extends GUIFrame {
-    public JButton button(PixelMap pmap, String title){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public JButton button(PixelMap pmap, String title){
         JButton b = new JButton(title);// tạo button
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int index =  1;
-
-                System.out.println(pmap.getPixelList().get(index).isVisible());
                 Map test1 = new Map(title,  pmap);
                 test1.setVisible(true);
             }
@@ -90,20 +91,25 @@ public class App extends GUIFrame {
         checkVisible.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double x = Double.parseDouble(JOptionPane.showInputDialog(null, "Nhap x", "X",
-                        JOptionPane.INFORMATION_MESSAGE));
-                double y = Double.parseDouble(JOptionPane.showInputDialog(null, "Nhap y", "Y",
-                        JOptionPane.INFORMATION_MESSAGE));
-                double z = Double.parseDouble(JOptionPane.showInputDialog(null, "Nhap z", "Z",
-                        JOptionPane.INFORMATION_MESSAGE));
-                Point newPoint = new Point(x,y,z);
-                boolean visible = newInput.getNewRoom().isVisible(newPoint);
-                if(visible){
-                    JOptionPane.showMessageDialog(null, "Visible!!!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Can't be seen!!!");
-
+                try{
+	            	double x = Double.parseDouble(JOptionPane.showInputDialog(null, "Nhap x", "X",
+	                        JOptionPane.INFORMATION_MESSAGE));
+	                double y = Double.parseDouble(JOptionPane.showInputDialog(null, "Nhap y", "Y",
+	                        JOptionPane.INFORMATION_MESSAGE));
+	                double z = Double.parseDouble(JOptionPane.showInputDialog(null, "Nhap z", "Z",
+	                        JOptionPane.INFORMATION_MESSAGE));
+	                Point newPoint = new Point(x,y,z);
+	                boolean visible = newInput.getNewRoom().isVisible(newPoint);
+	                if(visible){
+	                    JOptionPane.showMessageDialog(null, "Visible!!!");
+	                } else {
+	                    JOptionPane.showMessageDialog(null, "Can't be seen!!!");
+	
+	                }
                 }
+                catch (Exception exception) {
+//					System.out.println(exception);
+				}
 
             }
         });

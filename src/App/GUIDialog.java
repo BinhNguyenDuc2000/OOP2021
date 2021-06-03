@@ -4,7 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUIDialog extends JDialog {
-    //    create label
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//    create label
     private JLabel coordinates1 = new JLabel("Coordinates 1");
     private JLabel coordinates2 = new JLabel("Coordinates 2");
     private JLabel coordinates3 = new JLabel("Coordinates 3");
