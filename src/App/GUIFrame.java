@@ -6,7 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUIFrame extends JFrame {
-    private JButton exitButton;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JButton exitButton;
     public GUIFrame() {
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

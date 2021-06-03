@@ -1,6 +1,5 @@
 package Game;
 
-import pixel.Pixel;
 import pixel.PixelMap;
 
 import java.awt.Color;
@@ -12,7 +11,11 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Map extends JFrame implements ActionListener {
-    Color background_cl = Color.white;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	Color background_cl = Color.white;
     Color x_cl = Color.red;
     Color y_cl = Color.blue;
 
@@ -95,7 +98,7 @@ public class Map extends JFrame implements ActionListener {
 //        this.setVisible(true);
         this.setSize(500, 500);
         this.setLocationRelativeTo(null);
-        undo_bt.setEnabled(false);
+//        undo_bt.setEnabled(false);
     }
 
     public void actionShow() {
@@ -109,12 +112,12 @@ public class Map extends JFrame implements ActionListener {
         } else if (e.getActionCommand() == "Undo") {
         } else if (e.getActionCommand() == "Exit") {
             System.exit(0);
-            ;
-        } else {
-            String s = e.getActionCommand();
-            int k = s.indexOf(32);
-            int i = Integer.parseInt(s.substring(0, k));
-            int j = Integer.parseInt(s.substring(k + 1, s.length()));
+//            ;
+//        } else {
+//            String s = e.getActionCommand();
+//            int k = s.indexOf(32);
+//            int i = Integer.parseInt(s.substring(0, k));
+//            int j = Integer.parseInt(s.substring(k + 1, s.length()));
 //			if (checkWin(i, j)) {
 //				lb.setBackground(Color.MAGENTA);
 //				lb.setText(b[i][j].getText() + " WIN");
